@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ជួល Apple ID</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS has a new style for the buy-btn */
+        :root{--primary-color:#00bcd4;--green-success:#4caf50;--red-failed:#e53935;--dark-bg:#121212;--light-bg:#f4f4f4;--dark-card-bg:#1e1e1e;--light-card-bg:#ffffff;--dark-text:#e0e0e0;--light-text:#333333;--glow-color:rgba(0,188,212,0.5)}body{font-family:'Kantumruy Pro',sans-serif;margin:0;transition:background-color .3s,color .3s;overflow-x:hidden;background-color:var(--dark-bg);color:var(--dark-text)}body.light-mode{background-color:var(--light-bg);color:var(--light-text)}@keyframes gradient-animation{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}header{background:linear-gradient(-45deg,#23a6d5,#23d5ab,#1a1a2e,#16213e);background-size:400% 400%;animation:gradient-animation 15s ease infinite;padding:1rem 5%;position:sticky;top:0;z-index:1000;box-shadow:0 4px 20px rgba(0,0,0,.4)}nav{display:flex;justify-content:space-between;align-items:center;color:#fff}nav .logo svg{height:40px;vertical-align:middle}nav .nav-links{display:flex;align-items:center;gap:1.5rem}nav .nav-links a,nav .nav-links button{color:#fff;text-decoration:none;font-size:1rem;background:none;border:none;cursor:pointer;transition:color .3s,transform .3s}nav .nav-links a:hover,nav .nav-links button:hover{color:var(--primary-color);transform:translateY(-2px)}#logout-btn,#telegram-login-btn{background-color:var(--primary-color);padding:.5rem 1rem;border-radius:20px; font-family:'Kantumruy Pro',sans-serif;}#theme-toggle{font-size:1.5rem}#user-info{font-weight:700}.section{padding:2rem 5%;background-color:var(--dark-card-bg);margin-top:1rem;border-radius:15px}body.light-mode .section{background-color:var(--light-card-bg)}.order-box,.admin-order-box,.ticket-box{border:1px solid #444;padding:1rem;margin-bottom:1rem;border-radius:8px; cursor:default;}body.light-mode .order-box,body.light-mode .admin-order-box,body.light-mode .ticket-box{border-color:#ccc}.order-status-waiting,.ticket-status-open{color:#ff9800}.order-status-completed,.ticket-status-closed{color:#4caf50}.order-status-failed{color:var(--red-failed);font-weight:700}.apple-id-info{background:#2d2d2d;padding:.5rem;border-radius:5px;margin-top:.5rem;font-family:monospace;text-align:left}body.light-mode .apple-id-info{background:#e9e9e9}.admin-message{margin-top:1rem;padding:1rem;border:1px dashed var(--primary-color);border-radius:5px;background-color:rgba(0,188,212,.05)}.admin-message h4{margin-top:0}.admin-message p{white-space:pre-wrap;word-wrap:break-word}.admin-order-box textarea{height:60px;resize:vertical}.admin-order-box button,.admin-order-box input,.admin-order-box textarea,.admin-form input, .admin-form textarea, .admin-form button{display:inline-block;width:auto;padding:.5rem;margin-top:.5rem;margin-right:.5rem;background:#333;border:1px solid #555;color:#fff;border-radius:4px}.admin-order-box button, .admin-form button{background-color:var(--primary-color);cursor:pointer}.admin-order-box button.reject-btn{background-color:var(--red-failed)}.admin-tabs{display:flex;gap:1rem;margin-bottom:1rem;}.admin-tabs button{background-color:#555;}.admin-tabs button.active{background-color:var(--primary-color);}.admin-panel-content{display:none;}.admin-panel-content.active{display:block;}#telegram-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background-color:#2aabee;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(0,0,0,.3);z-index:1500;transition:transform .3s ease}#telegram-btn:hover{transform:scale(1.1)}#telegram-btn svg{width:32px;height:32px;fill:#fff}.success-icon{stroke:var(--green-success);stroke-width:2;fill:none;width:80px;height:80px;margin-bottom:1rem}.success-icon .check{stroke-dasharray:48;stroke-dashoffset:48;animation:draw .5s .2s ease-out forwards}@keyframes draw{to{stroke-dashoffset:0}}
+        /* NEW STYLES for Buy Button */
+        .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;padding:2rem 5%}.product-card{background:var(--dark-card-bg);border-radius:15px;overflow:hidden;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:transform .3s ease,box-shadow .3s ease;border:1px solid transparent}body.light-mode .product-card{background:var(--light-card-bg);box-shadow:0 10px 30px rgba(0,0,0,.1)}.product-card:hover{transform:translateY(-10px);box-shadow:0 0 25px var(--glow-color);border-color:var(--primary-color)}.product-card img{width:100%;height:180px;object-fit:cover}.product-card h3{margin:1rem 0 .5rem;font-size:1.5rem}.product-card .price{font-size:1.2rem;color:var(--primary-color);font-weight:700}.buy-btn{background-color:var(--primary-color);color:#fff;border:none;padding:.8rem 2rem;margin:1rem 0 1.5rem;border-radius:25px;cursor:pointer;font-family:'Kantumruy Pro',sans-serif;font-size:1rem;transition: all 0.3s ease; box-shadow: 0 0 0 0 rgba(0, 188, 212, 0.7);}.buy-btn:hover{background-color:#008fa1;transform:scale(1.05); box-shadow: 0 0 20px 10px rgba(0, 188, 212, 0);}
+        .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);backdrop-filter:blur(5px);display:flex;justify-content:center;align-items:center;z-index:2000}.modal-content{background:var(--dark-card-bg);color:var(--dark-text);padding:2rem;border-radius:15px;width:90%;max-width:400px;text-align:center;position:relative;border:1px solid var(--primary-color);box-shadow:0 0 30px var(--glow-color)}.close-btn{position:absolute;top:1rem;right:1.5rem;font-size:2rem;cursor:pointer}#qr-code-img{width:250px;height:250px;margin:1rem auto;border-radius:10px;background-color:#fff}
+    </style>
+</head>
+<body class="dark-mode">
+    <header>
+        <nav>
+            <a href="#" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" fill="white"/><path d="M12.5 7H11.5V13L16 15.5L16.5 14.5L12.5 12.25V7Z" fill="white"/></svg></a>
+            <div class="nav-links">
+                <a href="#products">ផលិតផល</a><a href="#how-to-login">របៀបចូលគណនី</a><a href="#how-to">របៀបទិញ</a><a href="#my-orders">ការបញ្ជាទិញរបស់ខ្ញុំ</a><button id="theme-toggle">☀️</button>
+                <span id="user-info" style="display:none"></span>
+                <button id="telegram-login-btn" style="display:none;">ចូលដោយ Telegram</button>
+                <button id="logout-btn" style="display:none">ចាកចេញ</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+       <section id="products" class="section product-grid"><div class="product-card" data-product="Minecraft"><img src="https://i.gifer.com/origin/41/4130221a71c84144a2c58f683e9dee5d_w200.gif" alt="Minecraft GIF"><h3>Minecraft</h3><p class="price">$0.25</p><button class="buy-btn">ទិញឥឡូវ</button></div><div class="product-card" data-product="GTA San Andreas"><img src="https://i.gifer.com/origin/85/8593574c81561f5b669145d25956793f_w200.gif" alt="GTA GIF"><h3>GTA San Andreas</h3><p class="price">$0.25</p><button class="buy-btn">ទិញឥឡូវ</button></div><div class="product-card" data-product="Shadowrocket"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/71/34/86/7134863a-1342-a337-d205-a4901597823f/source/512x512bb.jpg" alt="Shadowrocket Icon"><h3>Shadowrocket</h3><p class="price">$0.25</p><button class="buy-btn">ទិញឥឡូវ</button></div></section>
+       <section id="how-to-login" class="section"><h2>របៀបចូលគណនី (Login)</h2><ol><li><strong>ចុចប៊ូតុង "ចូលដោយ Telegram"៖</strong> នៅជ្រុងខាងស្តាំលើនៃគេហទំព័រ។</li><li><strong>ផ្ទាំងថ្មីនឹងលេចឡើង៖</strong> ប្រសិនបើអ្នកមិនទាន់បានចូល Telegram នៅលើ browser ទេ វាអាចនឹងតម្រូវឱ្យអ្នកដាក់លេខទូរស័ព្ទ។</li><li><strong>យល់ព្រម (Accept)៖</strong> ចុចប៊ូតុង "Accept" ពណ៌ខៀវធំ ដើម្បីអនុញ្ញាតឱ្យគេហទំព័រនេះស្គាល់គណនី Telegram របស់អ្នក។</li><li><strong>ចូលដោយជោគជ័យ៖</strong> ផ្ទាំងនោះនឹងបិទដោយស្វ័យប្រវត្តិ ហើយគេហទំព័រនឹង refresh។ ឈ្មោះរបស់អ្នកនឹងបង្ហាញឡើងនៅផ្នែកខាងលើ ជាការបញ្ជាក់ថាអ្នកបានចូលដោយជោគជ័យ។</li></ol></section>
+       <section id="how-to" class="section"><h2>របៀបទិញ និងដំណើរការ</h2><ol><li><strong>(ស្រេចចិត្ត) ចូលគណនី៖</strong> ដើម្បីងាយស្រួលតាមដានការបញ្ជាទិញរបស់អ្នក សូមចុចប៊ូតុង "ចូលដោយ Telegram" ជាមុនសិន។</li><li><strong>ជ្រើសរើសផលិតផល៖</strong> ចុចប៊ូតុង "ទិញឥឡូវ" នៅលើផលិតផលដែលអ្នកចង់បាន។</li><li><strong>ទូទាត់ប្រាក់៖</strong> ប្រអប់មួយនឹងលេចឡើងដែលមាន KHQR Code។ សូមធ្វើការស្កេនដើម្បីទូទាត់ប្រាក់។</li><li><strong>បញ្ជាក់ការទូទាត់៖</strong> បន្ទាប់ពីទូទាត់រួចរាល់ សូមចុចប៊ូតុង "ខ្ញុំបានបង់ប្រាក់រួចហើយ"។</li><li><strong>រង់ចាំការផ្ទៀងផ្ទាត់៖</strong> ប្រសិនបើអ្នកបានចូលគណនី សូមចូលទៅកាន់ផ្នែក "ការបញ្ជាទិញរបស់ខ្ញុំ"។ Admin នឹងពិនិត្យមើលការទូទាត់របស់អ្នក។</li><li><strong>ទទួល Apple ID៖</strong> នៅពេល Admin យល់ព្រមការទូទាត់របស់អ្នក ស្ថានភាពនឹងប្តូរទៅជា "កំពុងរង់ចាំ Admin"។ បន្ទាប់មក Admin នឹងបញ្ជូន Email និង Password មកឱ្យអ្នកនៅក្នុងប្រអប់នោះ។</li></ol></section>
+       <section id="my-orders" class="section" style="display:none"><h2><i class="fas fa-receipt"></i> ការបញ្ជាទិញរបស់ខ្ញុំ</h2><div id="orders-container"></div></section>
+       <section id="admin-panel" class="section" style="display:none"><h2><i class="fas fa-user-shield"></i> ផ្ទាំងបញ្ជាសម្រាប់ Admin</h2><div id="admin-orders-content"></div></section>
+    </main>
+    
+    <div id="payment-modal" class="modal-overlay" style="display:none"><div class="modal-content"><span class="close-btn">×</span><h2>វិក្កយបត្រ</h2><p><strong>ផលិតផល:</strong> <span id="modal-product-name"></span></p><p><strong>តម្លៃ:</strong> $0.25</p><p>សូមធ្វើការស្កេន QR Code ខាងក្រោមដើម្បីទូទាត់ប្រាក់តាម ABA ឬ Bakong។</p><img id="qr-code-img" src="https://i.ibb.co/Lzm9pW4/khqr-placeholder.png" alt="Cambodia QR Code"><button id="confirm-payment-btn" style="padding:10px 20px;margin-top:15px;cursor:pointer">ខ្ញុំបានបង់ប្រាក់រួចហើយ</button></div></div>
+    <div id="thank-you-modal" class="modal-overlay" style="display:none;"><div class="modal-content"><svg class="success-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle cx="26" cy="26" r="25" fill="none"/><path class="check" fill="none" d="M14 27l5 5 16-16"/></svg><h2>សូមអរគុណ!</h2><p>ការស្នើសុំទូទាត់របស់អ្នកត្រូវបានបញ្ជូនដោយជោគជ័យ។</p><button class="close-modal-btn" style="background-color:var(--primary-color); padding: .5rem 1rem; border-radius: 20px; border: none; color: white; cursor: pointer;">បិទ</button></div></div>
+
+    <a id="telegram-btn" href="https://t.me/aurorastore_safe" target="_blank"><svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.58c-.28 1.13-1.04 1.4-1.74.88l-4.98-3.6-2.32 2.2a.83.83 0 0 1-.72.3z"></path></svg></a>
+    
+    <script>
+    // --- Global State ---
+    let currentUser = null;
+    let appData = { orders: [], tickets: [], adminData: null };
+    const BOT_ID = '8125918516';
+
+    // --- Core App Logic ---
+    document.addEventListener('DOMContentLoaded', () => {
+        init();
+        addEventListeners();
+    });
+
+    async function init() {
+        const storedUser = localStorage.getItem('appleIDCurrentUser');
+        if (storedUser) {
+            currentUser = JSON.parse(storedUser);
+            await refreshData();
+            renderUIForLoggedInUser();
+        } else {
+            renderUIForLoggedOutUser();
+        }
+    }
+
+    async function refreshData() {
+        if (!currentUser) return;
+        try {
+            const data = await fetch(`/api/data/${currentUser.id}`).then(res => res.json());
+            appData = data;
+            renderAllContent();
+        } catch (error) {
+            console.error("Failed to refresh data:", error);
+        }
+    }
+
+    // --- UI Rendering ---
+    function renderUIForLoggedInUser() {
+        document.getElementById('telegram-login-btn').style.display = 'none';
+        document.getElementById('logout-btn').style.display = 'block';
+        const userInfo = document.getElementById('user-info');
+        userInfo.textContent = `សួស្តី, ${currentUser.first_name}`;
+        userInfo.style.display = 'block';
+        document.getElementById('my-orders').style.display = 'block';
+        if (currentUser.role === 'admin') {
+            document.getElementById('admin-panel').style.display = 'block';
+        }
+    }
+
+    function renderUIForLoggedOutUser() {
+        document.getElementById('telegram-login-btn').style.display = 'block';
+        document.getElementById('logout-btn').style.display = 'none';
+        document.getElementById('user-info').style.display = 'none';
+        document.getElementById('my-orders').style.display = 'none';
+        document.getElementById('admin-panel').style.display = 'none';
+    }
+
+    function renderAllContent() {
+        if (!currentUser) return;
+        renderOrders(appData.orders, document.getElementById('orders-container'));
+        if (currentUser.role === 'admin' && appData.adminData) {
+            renderAdminOrders(appData.adminData.allOrders, document.getElementById('admin-orders-content'));
+        }
+    }
+
+    function renderOrders(orders, container) {
+        if (!orders || orders.length === 0) {
+            container.innerHTML = '<p>អ្នកមិនទាន់មានការបញ្ជាទិញទេ។</p>';
+            return;
+        }
+        container.innerHTML = orders.map(order => {
+            let statusText, statusClass, detailsHtml;
+            switch (order.status) {
+                case "pending_verification": statusText = "កំពុងរង់ចាំការផ្ទៀងផ្ទាត់"; statusClass = "order-status-waiting"; detailsHtml = `<div class="apple-id-info"><p>Admin កំពុងពិនិត្យមើលការទូទាត់របស់អ្នក។</p></div>`; break;
+                case "paid": statusText = "កំពុងរង់ចាំ Admin"; statusClass = "order-status-waiting"; detailsHtml = `<div class="apple-id-info"><p>សូមរង់ចាំបន្តិច Admin កំពុងរៀបចំ Apple ID សម្រាប់អ្នក។</p></div>`; break;
+                case "completed":
+                    statusText = "បានផ្ដល់ជូន"; statusClass = "order-status-completed";
+                    const msgHtml = order.adminMessage ? `<div class="admin-message"><h4>សារពី Admin:</h4><p>${order.adminMessage}</p></div>` : "";
+                    detailsHtml = `<div class="apple-id-info"><p><strong>Email:</strong> ${order.appleIdEmail}</p><p><strong>Password:</strong> ${order.appleIdPass}</p></div>${msgHtml}`; break;
+                case "failed": statusText = "ការទូទាត់បានបរាជ័យ"; statusClass = "order-status-failed"; detailsHtml = `<div class="apple-id-info"><p>ការទូទាត់របស់អ្នកមិនត្រូវបានយល់ព្រមទេ។</p></div>`; break;
+                default: statusText = "មិនស្គាល់";
+            }
+            return `<div class="order-box"><h4>ផលិតផល: ${order.productName} (ID: ${order.id})</h4><p>ស្ថានភាព: <span class="${statusClass}">${statusText}</span></p>${detailsHtml}</div>`;
+        }).join('');
+    }
+
+    function renderAdminOrders(orders, container) {
+        const toVerify = orders.filter(o => o.status === 'pending_verification');
+        let vHtml = `<h4>ផ្ទៀងផ្ទាត់ការទូទាត់</h4>` + (toVerify.length === 0 ? '<p>គ្មាន</p>' : toVerify.map(o => `
+            <div class="admin-order-box"><p>ID: ${o.id} | User: ${o.buyerFirstName}</p>
+            <button onclick="window.App.approvePayment('${o.id}')">យល់ព្រម</button>
+            <button class="reject-btn" onclick="window.App.rejectPayment('${o.id}')">បដិសេធ</button></div>`).join(''));
+        
+        const toFulfill = orders.filter(o => o.status === 'paid');
+        let fHtml = `<h4 style="margin-top:2rem">ផ្ដល់ Apple ID</h4>` + (toFulfill.length === 0 ? '<p>គ្មាន</p>' : toFulfill.map(o => `
+            <div class="admin-order-box"><p>ID: ${o.id} | User: ${o.buyerFirstName}</p>
+            <input type="email" placeholder="Apple ID Email" id="email-${o.id}"><input type="text" placeholder="Password" id="pass-${o.id}">
+            <textarea id="message-${o.id}" placeholder="សារបន្ថែម"></textarea>
+            <button onclick="window.App.fulfillOrder('${o.id}')">បញ្ជូន</button></div>`).join(''));
+
+        container.innerHTML = vHtml + fHtml;
+    }
+
+    // --- Event Listeners & Actions ---
+    function addEventListeners() {
+        document.getElementById('telegram-login-btn').addEventListener('click', () => {
+            const width=600, height=500, left=(screen.width-width)/2, top=(screen.height-height)/2;
+            window.open(`https://oauth.telegram.org/auth?bot_id=${BOT_ID}&origin=${window.location.origin}&request_access=write`, 'telegramLogin', `width=${width},height=${height},left=${left},top=${top}`);
+        });
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            localStorage.removeItem('appleIDCurrentUser');
+            window.location.reload();
+        });
+        document.querySelectorAll('.buy-btn').forEach(btn => btn.addEventListener('click', (e) => {
+            const card = e.target.closest('.product-card');
+            document.getElementById('modal-product-name').textContent = card.dataset.product;
+            document.getElementById('payment-modal').style.display = 'flex';
+        }));
+        document.getElementById('confirm-payment-btn').addEventListener('click', async () => {
+            let buyerId, buyerFirstName;
+            
+            if (currentUser) {
+                buyerId = currentUser.id;
+                buyerFirstName = currentUser.first_name;
+            } else {
+                // GUEST CHECKOUT
+                const guestUsername = prompt("ដើម្បីបន្ត សូមបញ្ចូល Telegram Username របស់អ្នក (ឧ: @username):");
+                if (!guestUsername) {
+                    alert("ត្រូវតែបញ្ចូល Telegram Username។");
+                    return;
+                }
+                buyerId = `guest_${Date.now()}`; // Create a temporary unique ID for guests
+                buyerFirstName = guestUsername; // Use the provided username as the name
+            }
+
+            const orderData = {
+                buyerId: buyerId,
+                buyerFirstName: buyerFirstName,
+                productName: document.getElementById('modal-product-name').textContent,
+                status: 'pending_verification'
+            };
+            await fetch('/api/orders', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(orderData) });
+            document.getElementById('payment-modal').style.display = 'none';
+            document.getElementById('thank-you-modal').style.display = 'flex';
+            if (currentUser) {
+                refreshData();
+            }
+        });
+        document.querySelectorAll('.close-modal-btn, .close-btn').forEach(btn => btn.addEventListener('click', (e) => {
+            e.target.closest('.modal-overlay').style.display = 'none';
+        }));
+    }
+
+    // --- Global App Object for onclick events ---
+    window.App = {
+        handleTelegramLogin: (userData) => {
+            localStorage.setItem('appleIDCurrentUser', JSON.stringify(userData));
+            window.location.reload();
+        },
+        approvePayment: async (orderId) => {
+            await fetch(`/api/orders/${orderId}`, { method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ status: 'paid' }) });
+            refreshData();
+        },
+        rejectPayment: async (orderId) => {
+            await fetch(`/api/orders/${orderId}`, { method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ status: 'failed' }) });
+            refreshData();
+        },
+        fulfillOrder: async (orderId) => {
+            const data = {
+                status: 'completed',
+                appleIdEmail: document.getElementById(`email-${orderId}`).value,
+                appleIdPass: document.getElementById(`pass-${orderId}`).value,
+                adminMessage: document.getElementById(`message-${orderId}`).value
+            };
+            if (!data.appleIdEmail || !data.appleIdPass) return alert('សូមបំពេញ Email និង Password');
+            await fetch(`/api/orders/${orderId}`, { method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data) });
+            alert('បានបញ្ជូន Apple ID ជោគជ័យ!');
+            refreshData();
+        }
+    };
+
+    // Initial Load
+    init();
+    </script>
+</body>
+</html>
