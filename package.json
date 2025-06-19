@@ -1,0 +1,16 @@
+{
+  "name": "apple-id-rental",
+  "version": "1.0.0",
+  "description": "A secure Apple ID rental site.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemailer": "^6.7.2"
+  },
+  "engines": {
+    "node": "14.x"
+  }
+}
